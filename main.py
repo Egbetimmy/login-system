@@ -11,7 +11,7 @@ app.secret_key = 'your secret key'
 # Enter your database connection details below
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'mysql password'
+app.config['MYSQL_PASSWORD'] = 'T@nrose1996'
 app.config['MYSQL_DB'] = 'pythonlogin'
 
 # Intialize MySQL
@@ -124,5 +124,7 @@ def profile():
     return redirect(url_for('login'))
 
 
+'''
 if __name__=="__main__":
     app.run()
+'''
