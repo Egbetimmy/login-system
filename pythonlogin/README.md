@@ -11,3 +11,5 @@ set FLASK_APP=main.py
 $env:FLASK_APP = "main.py"
 set FLASK_DEBUG=1
 flask run
+
+flask --app main run --debug
