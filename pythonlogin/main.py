@@ -18,13 +18,8 @@ app.config['MYSQL_DB'] = 'pythonlogin'
 mysql = MySQL(app)
 
 
-@app.route('/')
-def open():
-    return 'hello'
-
-
 # http://localhost:5000/pythonlogin/ - this will be the login page, we need to use both GET and POST requests
-@app.route('/pythonlogin/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     # Output message if something goes wrong...
     msg = ''
@@ -52,7 +47,7 @@ def login():
             # Account doesn't exist or username/password incorrect
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
-    return render_template('index.html', msg='')
+    return render_template('home.html', msg='')
 
 
 # http://localhost:5000/python/logout - this will be the logout page
@@ -66,13 +61,14 @@ def logout():
     return redirect(url_for('login'))
 
 
-# http://localhost:5000/pythinlogin/register - this will be the registration page, we need to use both GET and POST requests
+# http://localhost:5000/pythinlogin/register - this will be the registration page, we use both GET and POST requests
 @app.route('/pythonlogin/register', methods=['GET', 'POST'])
 def register():
     # Output message if something goes wrong...
     msg = ''
     # Check if "username", "password" and "email" POST requests exist (user submitted form)
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
+    if request.method == 'POST' and 'username' in request.form \
+            and 'password' in request.form and 'email' in request.form:
         # Create variables for easy access
         username = request.form['username']
         password = request.form['password']
@@ -128,8 +124,3 @@ def profile():
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
-
-'''
-if __name__=="__main__":
-    app.run()
-'''
