@@ -51,7 +51,7 @@ def login():
 
 
 # http://localhost:5000/python/logout - this will be the logout page
-@app.route('/logout')
+@app.route('/pythonlogin/logout')
 def logout():
     # Remove session data, this will log the user out
     session.pop('loggedin', None)
@@ -115,7 +115,7 @@ def home():
 def profile():
     # Check if user is loggedin
     if 'loggedin' in session:
-        # We need all the account info for the user so we can display it on the profile page
+        # We need all the account info for the user, so we can display it on the profile page
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM accounts WHERE id = %s', [session['id']])
         account = cursor.fetchone()
